@@ -1,0 +1,30 @@
+<!--
+/*
+ * MyFonts Webfont Build ID 816955, 2011-05-15T12:52:40-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: VAG Rounded
+ * URL: http://new.myfonts.com/fonts/bitstream/vag-rounded/vag-rounded/
+ * Foundry: Bitstream
+ * Copyright: Copyright 1990-2003 Bitstream Inc. All rights reserved.
+ * License: http://www.myfonts.com/viewlicense?1056
+ * Licensed pageviews: 10,000/month
+ * CSS font-family: VAGRoundedBT-Regular
+ * CSS font-weight: normal
+ * 
+ * (c) 2011 Bitstream Inc
+*/
+
+ @font-face {
+	 font-family: 'VAGRoundedBT-Regular';
+	 src: url('style_296.eot');
+	 src: url('style_296.eot?#iefix') format('embedded-opentype'),
+	 url('style_296.woff') format('woff'),
+	 url('style_296.ttf') format('truetype'),
+	 url('style_296.svg#VAGRoundedBT-Regular') format('svg');
+	 }
