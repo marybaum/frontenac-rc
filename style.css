@@ -543,68 +543,125 @@ Structure and Layout
 
 /* Home 
 ------------------------------------------------------------ */
+
+@media all and (min-width:0) {
+
 .home .site-inner {
 	background: none;
 	margin: 0;
-	max-width: 90em;
+	padding: 0;
 }
 
 .home-featured {
-	background: url(images/heroball-2016.png) -30% 0 no-repeat;
-	background-size: contain;
+	background: url(images/heroball-2016.png) 50% 1em no-repeat;
+	background-size: 150%;
 	display: block;
-	min-height: 1024px;
-	padding: 3em 0 0;
+	min-height: 25em;
+	padding: 1em 0 0;
 	width: 100%;
 }
 
-.home-featured-left	{
-	float: left;
-	margin: 1em 0 0 8%;
-	text-align: right;
-	width: 15%;
-}
-
-.home-featured-left .textwidget li	{
-	background-image: none;
-}
-
-/*.home header.entry-header,*/
-.home .featured-content .entry-title a {
-  font-size: .7em;
-}
-
-/*#home-featured p a,
-.home-featured-left .textwidget a	{
-	background: #03c;
-	border-radius: 10px;
-	color: #cf0;
-	display: inline-block;
-	font-size: 12px;
-	font-size: 1.2rem;
-	font-weight: 400;
-	padding: 3px 6px;
-}
-
-#home-featured p  {
-  font-weight: 400;
-  overflow: hidden;
-}*/
-
+.home-featured-left,
 .home-featured-middle {
-	float: left;
-	margin: 1em 0 0 2%;
-	text-align: left;
-	width: 20%;
+	display: none;
 }
 
 .home-featured h3,
-.home-featured p	{
-	padding: 0 0 5px 0;
+.home-featured p,
+.home-featured ul li,
+.home-featured li a,
+.home-featured p a	{
+	background-image: none;
+	color: #195;
+	font-weight: 400;
+	margin: 0;
+	padding: 0 0 3px 0;
 
 }
 
+.home-featured ul li {
+	font-size: .9em;
+	line-height: 1.3;
+	margin: 0;
+	padding: 0;
+}
+
+.home-featured-right	{
+	float: right;
+	font-size: .8em;
+	font-weight: 400;
+	line-height: .9;
+	margin: 1em 2% 0 0;
+	text-align: left;
+	width: 57%;
+}
+
+.home .content-sidebar-wrap {
+	display: none;
+}
+
+.home footer.site-footer {
+	background: #047;
+	font-size: .8em;
+	padding: 1em 5%;
+	text-align: left;
+
+}
+
+.home footer.site-footer p,
+.home footer.site-footer p a {
+	color: #df0;
+	font-weight: 300;
+}
+
+}
+
+@media all and (min-width: 27em) {
+	
+	.home-featured {
+		min-height: 32em;
+	}
+	
+	.home-featured ul li {
+		line-height: 1.3;
+	}
+	
+	.home-featured-right	{
+		float: right;
+		font-size: 1em;
+		font-weight: 400;
+		margin: 2em 2% 0 0;
+		text-align: left;
+		width: 57%;
+	}
+
+	
+}
+
+@media all and (min-width: 40em) {
+	
+	.home-featured-middle {
+		display: block;
+		float:left;
+		margin: 6em 1em 1em 4%;
+		width: 20%;
+	}
+	
+	.home-featured-right {
+		width: 30%;	
+	}
+	
+}
+
+@media all and (min-width: 64em) {}
+
+@media all and (min-width: 90em) {
+
 /* Home Featured Right: Main menu around the ball */
+
+/*
+ * 
+
 
 .home-featured-right	{
 	font-size: 1em;
@@ -660,7 +717,7 @@ Structure and Layout
 }
 .home-featured-right ul.menu li:nth-child(9)    {
     margin-left:-25px;
-}
+}*/
 
 .home-featured-right ul.menu li ul  {
     margin-left: 20px;
@@ -684,6 +741,8 @@ Structure and Layout
     margin-left: 0;
 }
 
+}
+
 footer.site-footer {
 	background: none;
 	color: #fff;
@@ -698,6 +757,10 @@ footer.site-footer {
 --------------------------------------------- */
 
 /* Content */
+
+.home .content {
+	background: none;
+}
 
 .content {
 	background: #fff;
