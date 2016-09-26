@@ -566,7 +566,6 @@ Structure and Layout
 	display: none;
 }
 
-.home-featured h3,
 .home-featured p,
 .home-featured ul li,
 .home-featured li a,
@@ -622,38 +621,140 @@ Structure and Layout
 		min-height: 32em;
 	}
 	
-	.home-featured ul li {
-		line-height: 1.3;
+	.home-featured-middle {
+		display: block;
+		float: left;
+		margin: 4.2em 0 0 7%;
+		width: 32%;
+	}
+	
+	.home-featured h2 {
+		font-size: 0.7em;
 	}
 	
 	.home-featured-right	{
 		float: right;
-		font-size: 1em;
-		font-weight: 400;
-		margin: 2em 2% 0 0;
+		margin: 2em 9% 0 0;
 		text-align: left;
-		width: 57%;
+		width: 50%;
 	}
-
+	
+	.home-featured-right li a {
+		font-size: 1em;
+		line-height: 1.5;
+		color: #047;
+		font-weight:  300;
+	}
+	
+	.home footer.site-footer {
+		background: none;
+	}
 	
 }
 
 @media all and (min-width: 40em) {
 	
+	.home-featured {
+		min-height: 38em;
+	}
+	
+	.home-featured h2 {
+		font-size: 1em;
+		line-height: .9;
+		margin: .25em 0;
+	}
+	
+	.home-featured-left {
+		display: block;
+		float: left;
+		margin: 5.5em 0 0 7%;
+		width: 32%;
+		
+	}
+	
 	.home-featured-middle {
 		display: block;
-		float:left;
-		margin: 6em 1em 1em 4%;
-		width: 20%;
+		float: left;
+		margin: 5.5em 0 0;
+		width: 30%;
 	}
 	
 	.home-featured-right {
-		width: 30%;	
+		float: right;
+		margin: 5em 2% 0 0;
+		font-size: 1em;
+		width: 29%;
 	}
 	
 }
 
-@media all and (min-width: 64em) {}
+@media all and (min-width: 64em) {
+		.home-featured {
+		background-position: -6em 0;
+		background-size: contain;
+		min-height: 42em;
+		width: 72em;
+	}
+
+	.home-featured-left {
+		margin: 5em 0 0 5%;
+		width: 13.6%;
+	}
+
+	.home-featured-middle {
+		margin: 5em 0 0;
+		width: 15%;
+	}
+
+	.home-featured-right {
+		float: left;
+		margin: 5em 0 0 13em;
+	}
+	
+	
+	.home-featured-right ul.menu li     {
+	    padding: .2em 0;
+	    background-image: none;
+	    color: #cf0;
+	}
+	
+	.home-featured-right ul.menu li a {
+		color: #cf0;
+		font-size: 1em;
+	}
+	
+.home-featured-right ul.menu li:nth-child(1)    {
+    margin-left: -6.5em;
+}
+.home-featured-right ul.menu li:nth-child(2)    {
+    margin-left:-4.5em;
+}
+.home-featured-right ul.menu li:nth-child(3)    {
+    margin-left: -3.6em;
+}
+.home-featured-right ul.menu li:nth-child(4)    {
+    margin-left: -2.5em;
+}
+.home-featured-right ul.menu li:nth-child(5)    {
+    margin-left: -1.7em;
+}
+.home-featured-right ul.menu li:nth-child(6)    {
+    margin-left: -1em;
+}
+
+.home-featured-right ul.menu li:nth-child(7)    {
+    margin-left: 0;
+}
+.home-featured-right ul.menu li:nth-child(8)    {
+    margin-left: .5em;
+}
+.home-featured-right ul.menu li:nth-child(9)    {
+    margin-left:1em;
+}
+.home-featured-right ul.menu li:nth-child(10)    {
+    margin-left:.5em;
+}
+}
 
 @media all and (min-width: 90em) {
 
@@ -1962,88 +2063,6 @@ Media Queries
 	.site-footer {
 		padding: 40px 0;
 		padding: 4rem 0;
-	}
-
-}
-
-@media only screen and (max-width: 768px) {
-
-	.site-header {
-		padding-bottom: 10px;
-		padding-bottom: 1rem;
-	}
-
-	.title-area {
-		padding-bottom: 6px;
-		padding-bottom: 0.6rem;
-	}
-
-	.minimum .site-tagline {
-		margin-top: 200px;
-		margin-top: 20rem;
-	}
-
-	.genesis-nav-menu a {
-		padding: 20px 10px;
-		padding: 2rem 1rem;
-	}
-
-	.site-footer .nav-secondary a {
-		margin: 0 10px;
-		margin: 0 1rem;
-	}
-
-	.responsive-menu {
-		display: none;
-	}
-
-	#responsive-menu-icon {
-		display: block;
-	}
-
-	.home-featured .simple-social-icons ul li a {
-		font-size: 36px !important;
-		font-size: 3.6rem !important;
-		padding: 20px !important;
-		padding: 2rem !important;
-	}
-
-	.genesis-grid-even,
-	.genesis-grid-odd,
-	.post-type-archive-portfolio .entry {
-		width: 100%;
-	}
-
-	.post-type-archive-portfolio .entry:nth-of-type(2n),
-	.post-type-archive-portfolio .entry:nth-of-type(2n+1) {
-		float: none;
-		padding: 0;
-	}
-
-	.five-sixths,
-	.four-sixths,
-	.one-fourth,
-	.one-half,
-	.one-sixth,
-	.one-third,
-	.three-fourths,
-	.three-sixths,
-	.two-fourths,
-	.two-sixths,
-	.two-thirds {
-		margin: 0;
-		width: 100%;
-	}
-
-}
-
-@media only screen and (max-width: 600px) {
-
-	.home-featured-1,
-	.home-featured-2,
-	.home-featured-3,
-	.home-featured-4 {
-		width: 50%;
 	}
 
 }
