@@ -133,22 +133,17 @@ body {
   color: #333;
 }
 
-@media all and (min-width: 0) {
-	
-	.home body	{
-		background: #06c;
-	}
-	
-}
-
-@media all and (min-width: 1024px)	{
-	body.home	{
-		background: url(http://frontenactennis.com/wp-content/themes/minimumFRC/images/courtbgd.jpg) 0 0 no-repeat;
+body.home	{
+		background: #048;
+		background: url(http://frontenactennis.com/wp-content/themes/minimumFRC/images/courts.jpg) 
+		background-position: 0 0, 0 0;
+		background-repeat: no-repeat, no-repeat;
 		background-size: cover;
+		background-blend-mode: soft-light;
 		width: 100%;
 }
 
-}
+
 /* Typography =================================================== */
 h1,
 h2,

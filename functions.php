@@ -38,7 +38,7 @@ wp_register_style('frc-fontawesome' , get_stylesheet_directory_uri() . '/type/fo
 
 	wp_enqueue_style( 'frc-vagrounded' );
 	wp_enqueue_style( 'frc-fontawesome' );
-//	wp_enqueue_style( 'frc-320andup' );
+	//wp_enqueue_style( 'frc-320andup' );
 }
 
 /** Add new image sizes */
@@ -46,8 +46,8 @@ add_image_size( 'header', 1600, 9999, false );
 add_image_size( 'pros2', 330, 230, TRUE );
 add_image_size( 'pros', 275, 343, TRUE );
 add_image_size( 'medium', 275, 343, false );
-add_image_size( 'classic', 298, 350, TRUE );
-add_image_size( 'featured', 298, 250, TRUE );
+add_image_size( 'classic', 298, 999, false );
+add_image_size( 'featured', 600, 999, FALSE );
 add_image_size( 'classic-post', 640, 0, TRUE );
 add_image_size( 'prothumbs', 125, 156, TRUE );
 add_image_size( 'thumbs2', 125, 125, TRUE );
@@ -235,10 +235,90 @@ function frc_comments_gravatar( $args ) {
 
 	$args['avatar_size'] = 96;
 	return $args;
-
 }
 
-//* Register widget areas
+ //Big bgd images on pro bios.
+ 
+	/**
+	 * Get featured image markup.
+	 *
+	 * Only when the single Post or Page has a featured image, and only when
+	 * showing the first page when the Page or Post is divided into multiple
+	 * pages using next page quicktag.
+	 *
+	 * @author Sridhar Katakam
+	 * @author Gary Jones
+	 * @link   http://sridharkatakam.com/display-featured-image-header-minimum-pro/
+	 *
+	 * @return  string|bool Image markup if image could be determined
+	 */
+	
+	 
+	function frc_get_featured_image() {
+		// Uncomment the lines below if you want to limit to *just* featured
+		// images, and not fallback to first-attached images.
+		 if ( ! has_post_thumbnail() ) {
+		 	return;
+		 }
+		if (!in_category('pros') ) {
+			return;
+		}
+		
+
+			
+		// If post has no featured image, it will try to fall back to
+		// first-attached image if the first conditional in this function
+		// is commented out.
+		
+		return genesis_get_image('class=alignleft');
+	}
+
+	add_action('genesis_after_header', 'frc_featured_image', 9);
+	
+	/**
+	 * Display Featured image after header.
+	 *
+	 * Only on the first page when the Page or Post is divided into multiple
+	 * using next page quicktag.
+	 *
+	 * Scope: static Pages and single Posts.
+	 *
+	 * @author Sridhar Katakam
+	 * @author Gary Jones
+	 * @link   http://sridharkatakam.com/link-to-your-tutorial
+	 */
+	function frc_featured_image() {
+	if( has_post_thumbnail() && ( in_category('pros')  ) && 0 === get_query_var( 'page' ) ) {
+
+		// Get the URL of featured image
+		$image = genesis_get_image( 'format=url' );
+
+		// Get the alt text of featured image
+		$thumb_id = get_post_thumbnail_id( get_the_ID() );
+		$alt = get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
+
+		// If no alt text is present for featured image, set it to Post/Page title
+		if ( '' == $alt ) {
+			$alt = the_title_attribute( 'echo=0' );
+		}
+
+		// Show featured image
+		printf(
+			'<div class="big-bgd-featured-img"><img src="%s" alt="%s" class="alignleft" /></div>',
+			esc_url( $image ),
+			$alt
+		);
+		
+		//Remove small copy of featured image from the entry text.
+	remove_action('genesis_entry_header', 'genesis_do_post_image', 4);
+	
+		}
+
+	}
+	
+	
+	
+// Register widget areas
 genesis_register_sidebar( array(
 	'id'          => 'site-tagline-right',
 	'name'        => __( 'Site Tagline Right', 'frc' ),
