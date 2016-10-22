@@ -124,7 +124,26 @@ function custom_home_layout($opt) {
     return $opt;
 }
 
-add_action( 'genesis_before_entry', 'mbf_postimg_above_title' );
+// add categories to body classes
+function fr_body_class_add_categories( $classes ) {
+ 
+	// Get the categories that are assigned to this post
+	$categories = get_the_category();
+ 
+	// Loop over each category in the $categories array
+	foreach( $categories as $current_category ) {
+ 
+		// Add the current category's slug to the $body_classes array
+		$classes[] = $current_category->slug;
+ 
+	}
+ 
+	// Return the $body_classes array
+	return $classes;
+}
+add_filter( 'body_class', 'fr_body_class_add_categories' );
+
+
 /**
 * Show Featured Image above Post Titles regardless of Content Archives settings
 *
@@ -132,6 +151,8 @@ add_action( 'genesis_before_entry', 'mbf_postimg_above_title' );
 * @author Sridhar Katakam
 * @link   http://sridharkatakam.com/display-featured-images-post-titles-posts-page-genesis/
 */
+add_action( 'genesis_before_entry', 'mbf_postimg_above_title' );
+
 function mbf_postimg_above_title() {
 
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );

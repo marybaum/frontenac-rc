@@ -143,7 +143,8 @@ Defaults
 --------------------------------------------- */
 
 html {
-	font-size: 100%; /* 21px rems if we really need a fixed measurement. */
+	font-size: 100%; /* 21px rems fixed measurement. */
+	overflow: scroll;
 }
 
 body {
@@ -201,7 +202,6 @@ a:hover {
 p {
 	margin: 0 0 .8em;
 	padding: 0;
-	break-inside: avoid;
 }
 
 em {
@@ -290,7 +290,7 @@ header.entry-header h1 {
 h2,
 .h2 {
   font-size: 1.8em;
-  line-height: .65;
+  line-height: .85;
   margin: .25em 0;
 }
 h3,
@@ -323,7 +323,7 @@ ol,
 ul,
 dl,
 address {
-  margin: 0 0  .25em;
+  margin: 0 0 .5em;
   font-size: 1em;
   line-height: 1.5;
 }
@@ -352,6 +352,7 @@ ul li  {
   background-size: 5%;
   background-position: 0 6px;
   background-repeat: no-repeat;
+  break-inside: avoid;
   padding: 0 0 0 20px;
   margin: 0 0 5px;
   font-size: 1em;
@@ -519,6 +520,9 @@ Structure and Layout
 	margin: 0;
 }
 
+/*.adults .site-inner,
+.juniors .site-inner,
+.archive .site-inner, */
 .site-inner {
 	background: #047;
 	display: block;
@@ -526,16 +530,6 @@ Structure and Layout
 	max-width: 64em;
 	z-index: 10;
 }
-
-/*.minimum-landing .site-inner {
-	margin: 40px auto;
-	margin: 4rem auto;
-	padding: 60px 60px 20px;
-	padding: 6rem 6rem 2rem;
-	width: 800px;
-}*/
-
-
 
 /* Home 
 ------------------------------------------------------------ */
@@ -841,9 +835,9 @@ Structure and Layout
 footer.site-footer {
 	background: none;
 	color: #fff;
-	max-width: 64em;
+	max-width: none;
+	margin: 6vh auto;
 }
-
 
 /* Site Containers
 --------------------------------------------- */
@@ -860,10 +854,9 @@ footer.site-footer {
 .content {
 	background: #fff;
 	border-left: 10px solid #789;
-	padding: 1em 4%;
-	width: 75%;
+	padding: 1em 4% 3em;
+	width: 79.3%;
 }
-
 
 
 .sidebar-content .content {
@@ -1071,7 +1064,7 @@ a.alignright {
 }
 
 .breadcrumb a {
-	color: #11CC33;
+	color: #1c3;
 	font-weight: 700;
 }
 
@@ -1139,7 +1132,7 @@ a.alignright {
 	margin: 0 0  2rem;
 }
 
-.entry-title a,
+/*.entry-title a,
 .sidebar .widget-title a {
 	border: none;
 	color: #333;
@@ -1155,7 +1148,7 @@ a.alignright {
 	text-transform: uppercase;
 }
 
-/*.home-featured .widget-title {
+.home-featured .widget-title {
 	margin: 0 0  1rem;
 }*/
 
@@ -1187,23 +1180,23 @@ Widgets
 
 .archive article {
 	float: left;
-	height: 19em;
+	height: 16em;
 	margin: 0;
 	position: relative;
-	width: 33%;
+	width: 23%;
 }
 
 .archive article h2.entry-title a {
 	position: absolute;
-	top: 10.3em;
+	bottom: 3em;
 	left: 0;
 	right: 0;
 	color: #fff;
 	background-color: rgba(0, 0, 51, .33);
 	font-size: 0.7em;
-	line-height: 1;
-	font-weight: 700;
-	height: 2.7em;
+	line-height: .8;
+	font-weight: 300;
+	height: 3em;
 	padding: 0.4em;
 }
 
@@ -1227,34 +1220,41 @@ display: none; /*Shame*/
 --------------------------------------------------------*/
 
 .meetpros {
-	background: rgba(255, 255, 255, 0);
-	columns: 4;
-	padding: 0;
+	background: rgba(0, 0, 0, 0.4);
+	columns: 5;
+	padding: .5em;
+}
+
+.meetpros h4.widget-title {
+	column-span: all;
+	font-size:  2rem;
+	font-weight: 300;
+	margin: 0 0 .5rem;
+	text-transform: none;
+}
+
+.pros .meetpros .featured-content article.entry {
+	display: inline-block;
 	width: 100%;
 }
 
-.meetpros h4 {
-	column-span: all;
-	font-weight: 900;
-	letter-spacing: 3px;
-	margin: 0 0 .4em;
-}
-
-.meetpros .featured-content article.entry {
-	background: none;
-	display: inline-block;
-	float: left;
-	color: #fff;
-	padding: .25em 0;
-	width: auto;
-}
-
-.meetpros h2.entry-title a {
-	color: #fff;
-	font-size: .5em;
-	font-weight: 600;
-	letter-spacing: 2px;
+.single.pros .meetpros h2.entry-title a {
+	display: block;
+	font-size: .8rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 1.1;
 	text-transform: uppercase;
+	z-index: 50;
+}
+
+.single.pros .meetpros header.entry-header {
+	margin: 0;
+}
+
+.archive.pros article h2.entry-title a {
+	bottom: 3em;
+	height: 2.7em;
 }
 
 /* Plugins
@@ -1635,7 +1635,7 @@ Content Area
 	-moz-column-span: all;
 	-webkit-column-span: all;
 	font-size: 1.8em;
-	margin: .5em 10% .5em 0;
+	margin: .3em 10% .15em 0;
 }
 
 .entry-content h6 a {
@@ -1647,8 +1647,8 @@ Content Area
 .entry-content p,
 .entry-content ul,
 .quote-caption {
-	font-size: 90%;
-	margin: 0 0 .8em 0;
+	font-size: .8em;
+	margin: 0 0 .5em 0;
 	padding: 0;
 }
 
@@ -1697,30 +1697,42 @@ Content Area
 -----------------------------------------------------------*/
 
 @media all and (min-width: 120em){
+	
+	.site-container {
+	}
 
 	.pros header.site-header,
 	.pros .site-container {
 		max-width: 90em;
 	}
 	
+	.single.pros .site-container {
+		min-height: 75vh;
+	}
+	
 	.pros .big-bgd-featured-img {
-		margin: 0 0 0 10em;
+		padding: 0;
+	}
+	
+	.pros .big-bgd-featured-img img {
+		margin: 0 0 0 10vw;
 		background-position: 0 0;
 		background-size: 100%;
+		height: 83vh;
 		position: relative;
 		z-index: -999;
 	}
 	
-	.pros .breadcrumb {
+	.single.pros .breadcrumb {
 		color: #cf0;
-		margin: 3em 1em 1em;
+		margin-left: .5em;
 	}
 	
-	.pros .one-third.first {
+	.pros .one-fourth.first {
 		margin: 0 1em 0 0;
 	}
 
-	.single article.programs header img,
+	.single.adults article header.entry-header img,
 	.single.jrs .entry-header img,
 	.single.pros .entry-header img {
 		display: none; /*Shame. This should be a hook.*/
@@ -1729,54 +1741,101 @@ Content Area
 	.single.pros .site-inner {
 		background: none;
 		position: absolute;
-		top: 0;
+		top: 5em;
 		left: 0;
+		width: 78em;
 	}
 	
 	.single.pros .content {
 		background: none;
 		border: none;
-		padding: 0;
+		color: #fff;
+		padding: 2em 1em 0;
+		width: 80%;
 	}
 	
-	.single.pros article.entry {
-		margin: 0;
-		background: rgba(255, 255, 255, 0);
-		padding: 1em;
-		width: 60%;
-	}
-	
-	.single.pros .entry-content,
-	.single.pros .entry-footer {
-		padding: .4em;
-		background: none;
-		font-size: 80%;
-	}
-
 	.single.pros aside.sidebar {
 		border-right: 10px solid #789;
-		min-height: 54em;
-		padding: 4em 1% 0;
-		width: 25%;
+		min-height: 75vh;
+		padding: 2em 1% 0;
+		width: 20%;
+		z-index: 799;
+	}
+	
+	.single.pros footer.site-footer {
+		background: none;
+		color: #fff;
+		font-size: .7em;
+		padding: 0 0 0 .5em;
+		max-width: 78em;
+		position: absolute;
+		top: 84vh;
+		left: 14vw;
+	}
+		
+	.single.pros article {
+		margin: 0;
+		width: 70%;
+	}
+	
+	.single.pros header.entry-header,
+	.single.pros .entry-content 	 {
+		margin: .7em 0 0 .5em;
+	}
+	
+	.single.pros .entry-header h1 {
+		color: #fff;
+		font-size: 2.4em;
+		font-weight: 300;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+	
+	.single.pros .entry-content {
+		min-height: 30vh;
+		width: 65%;
+	}
+	
+	.single.pros .copy3 	 {
+		display: block;
+		columns: 3;
+	}
+	
+	.single.pros .entry-footer {
+		margin: 1rem 0;
+		width: 70%; 
 	}
 
 	.single.pros .content h4,
-	.single.pros .content h1,
 	.single.pros.content h2 {
-		color: #cf0;
+		color: #df0;
+		font-weight: 300;
 	}
 
-
 	.single.pros .content h3,
-	.single.pros .content h5,
-	.single.pros .content p {
+	.single.pros .content h5 {
 		color: #fff;
 	}
 	
-	.single.pros .content a {
-		color: #1c3;
+	.single-pros .entry-content p {
+		font-size: 1rem;
 	}
-
+	
+	.single.pros .content a {
+		color: #1f3;
+	}	
+	
+	.single.pros .entry-content img.alignleft {
+		margin: 0 0 .5em;
+		width: 100%;
+	}
+	
+	.single.pros .entry-content h4 {
+		font-size: 1.6rem;
+		font-weight: 300;
+		margin: .8em 0 .4em;
+	}
+	
 }
 
 /* Pagination
@@ -1885,74 +1944,46 @@ Sidebar
 ---------------------------------------------------------------------------------------------------- */
 
 
-.sidebar {
-	float: right;
-	margin: 0;
-	padding: 1em 1%;
-	width: 25%;
-}
-
 aside.sidebar {
 	background: #047;
 	color: #fff;
 	float: left;
 	margin: 0;
 	padding: 1em 1%;
-	width: 25%;
+	width: 20%;
 }
 
 .sidebar img {
-	margin: 0 0  15px;
-	margin: 0 0  1.5rem;
+	margin: 0 0  0.6rem;
 }
 
 .sidebar p:last-child,
 .sidebar .featured-content img {
-	margin: 0 0  0;
+	margin: 0;
 }
 
 .sidebar li,
 .sidebar li a {
 	background-image: none;
 	color: #cf0;
+	font-size: 1.1rem;
+	line-height: 2.3;
 	list-style-type: none;
 	margin: .2em 0 0;
 	word-wrap: break-word;
 }
 
-.sidebar ul > li:last-child {
-	margin: 0 0  0;
+.sidebar ul li:last-child {
+	margin: 0;
 }
 
 .sidebar .widget {
-	margin: 0 0  1em;
-}
-
-.sidebar .tagcloud a {
-	background-color: #333;
-	border-radius: 3px;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	margin: 0 5px 5px 0;
-	margin: 0 0.5rem 0.5rem 0;
-	padding: 5px 10px;
-	padding: 0.5rem 1rem; 
-}
-
-.sidebar .tagcloud a:hover {
-	background-color: #0ebfe9;
-	color: #fff;
-}
-
-.sidebar .enews-widget {
-	background-color: #333;
+	margin: 0 0  0.3em;
 }
 
 .sidebar h2 {
-	color: #cf0;
-	font-size: 1.4em;
+	color: #fff;
+	font-size: 1.4rem;
 	line-height: 1;
 	margin: 0;
 }
@@ -2025,21 +2056,17 @@ Site Footer
 ---------------------------------------------------------------------------------------------------- */
 
 .site-footer {
-	background-color: #333;
+	background: #048;
 	letter-spacing: 1px;
-	letter-spacing: 0.1rem;
-	padding: 60px 0;
-	padding: 6rem 0;
-	text-align: center;
 }
 
 .site-footer a,
 .site-footer p {
-	color: #999;
+	color: #fff;
 }
 
 .site-footer a:hover {
-	color: #fff;
+	color: #df0;
 }
 
 .site-footer a {
@@ -2056,30 +2083,8 @@ Site Footer
 Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1179px) {
 
-	.wrap {
-		max-width: 960px;
-	}
-
-	.site-header .widget-area {
-		width: 620px;
-	}
-
-	.content {
-		width: 580px;
-	}
-
-	.footer-widgets-1,
-	.footer-widgets-2,
-	.footer-widgets-3,
-	.sidebar {
-		width: 280px;
-	}
-
-}
-
-@media only screen and (max-width: 1023px) {
+/*@media only screen and (max-width: 1023px) {
 
 	.wrap {
 		max-width: 768px;
@@ -2167,8 +2172,8 @@ Media Queries
 	}
 
 	.site-footer {
-		padding: 4rem 0;
-	}
+		padding: 1em 0;
+	}*/
 
 }
 

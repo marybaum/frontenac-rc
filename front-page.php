@@ -43,7 +43,7 @@ function frc_front_page_genesis_meta() {
 
 	}
 
-	if ( is_active_sidebar( 'home-featured-left' ) || is_active_sidebar( 'home-featured-middle' ) || is_active_sidebar( 'home-featured-right' ) ) {
+	if ( is_active_sidebar( 'home-featured-left' ) || 	is_active_sidebar( 'home-featured-middle' ) || is_active_sidebar( 'home-featured-right' ) ) {
 
 		//* Add Home featured Widget areas
 		add_action( 'genesis_before_content_sidebar_wrap', 'frc_home_featured', 15 );
@@ -54,7 +54,7 @@ function frc_front_page_genesis_meta() {
 //* Add markup for homepage widgets
 function frc_home_featured() {
 			
-		//add home-featured containing dive for the ball
+		//add home-featured containing div for the ball
 		echo '<div class="home-featured">';
 
 		genesis_widget_area( 'home-featured-left', array(
