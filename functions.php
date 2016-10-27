@@ -42,15 +42,9 @@ wp_register_style('frc-fontawesome' , get_stylesheet_directory_uri() . '/type/fo
 }
 
 /** Add new image sizes */
-add_image_size( 'header', 1600, 9999, false );
-add_image_size( 'pros2', 330, 230, TRUE );
-add_image_size( 'pros', 275, 343, TRUE );
+add_image_size( 'giant', 1600, 9999, false );
 add_image_size( 'medium', 275, 343, false );
-add_image_size( 'classic', 298, 999, false );
-add_image_size( 'featured', 600, 999, FALSE );
-add_image_size( 'classic-post', 640, 0, TRUE );
-add_image_size( 'prothumbs', 125, 156, TRUE );
-add_image_size( 'thumbs2', 125, 125, TRUE );
+add_image_size( 'portait-featured', 600, 999, FALSE );
 add_image_size( 'homemid', 200, 300, false );
 add_image_size( 'homemid-crop', 240, 120, TRUE );
 add_image_size( 'homeleft', 180, 120, TRUE );
