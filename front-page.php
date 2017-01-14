@@ -16,9 +16,7 @@ function frc_front_page_genesis_meta() {
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 		
 		//* Remove site header elements
-		remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
 		remove_action( 'genesis_header', 'genesis_do_header' );
-		remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
 		
 		//* Remove navigation
 		remove_action( 'genesis_after_header', 'genesis_do_nav', 15 );
@@ -54,25 +52,27 @@ function frc_front_page_genesis_meta() {
 //* Add markup for homepage widgets
 function frc_home_featured() {
 			
-		//add home-featured containing div for the ball
-		echo '<div class="home-featured">';
+		//add Foundation gridding, then home-featured containing div for the ball
+		echo '<div class="row">
+						<div class="small-12 large-8 xlarge-7 left columns">
+						<div class="home-featured">';
 
 		genesis_widget_area( 'home-featured-left', array(
-			'before'=> '<div class="home-featured-left">',
+			'before'=> '<div class="small-12 medium-3 large-2 columns home-featured-left">',
 			'after'	=> '</div>',
 		) );
 
 		genesis_widget_area( 'home-featured-middle', array(
-			'before'=> '<div class="home-featured-middle">',
+			'before'=> '<div class="small-12 medium-4 large-4 columns home-featured-middle">',
 			'after'	=> '</div>',
 		) );
 
 		genesis_widget_area( 'home-featured-right', array(
-			'before'=> '<div class="home-featured-right">',
+			'before'=> '<div class="small-12 medium-4 large-5 columns home-featured-right">',
 			'after'	=> '</div>',
 		) );
 
-	echo '</div>'; //* end .home-featured
+	echo '</div></div></div>'; //* end .home-featured
 
 }
 

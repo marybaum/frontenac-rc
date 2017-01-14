@@ -32,23 +32,21 @@ add_action('wp_enqueue_scripts' , 'frc_enqueue_scripts');
 
 function frc_enqueue_scripts() {
 
-wp_register_style('frc-vagrounded' , get_stylesheet_directory_uri() . '/type/vagrounded.css' , array(), '2');
+//wp_register_style('frc-vagrounded' , get_stylesheet_directory_uri() . '/type/vagrounded.css' , array(), '2');
 wp_register_style('frc-fontawesome' , get_stylesheet_directory_uri() . '/type/font-awesome.css' , array(), '2');
 //wp_register_style('frc-320andup', get_stylesheet_directory_uri() . '/assets-320andup/css/320andup.css', array(), '2');
 
-	wp_enqueue_style( 'frc-vagrounded' );
+	//wp_enqueue_style( 'frc-vagrounded' );
 	wp_enqueue_style( 'frc-fontawesome' );
 	//wp_enqueue_style( 'frc-320andup' );
 }
 
-/** Add new image sizes */
-add_image_size( 'giant', 1600, 9999, false );
-add_image_size( 'medium', 275, 343, false );
-add_image_size( 'portait-featured', 600, 999, FALSE );
-add_image_size( 'homemid', 200, 300, false );
+// Add new image sizes 
+add_image_size( 'homemid', 200, 200, TRUE );
 add_image_size( 'homemid-crop', 240, 120, TRUE );
-add_image_size( 'homeleft', 180, 120, TRUE );
+add_image_size( 'homeleft', 180, 180, TRUE );
 add_image_size( 'homeleft-tall', 180, 999, false );
+
 
 /** Add support for custom header */
 add_theme_support( 'genesis-custom-header', array(
@@ -79,21 +77,18 @@ genesis_unregister_layout( 'content-sidebar-sidebar' );
 genesis_unregister_layout( 'sidebar-content-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
 
-//* Unregister secondary sidebar 
-unregister_sidebar( 'sidebar-alt' );
-
 //* Remove site description
 remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
 //* Reposition the primary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_after_header', 'genesis_do_nav', 15 );
+//add_action( 'genesis_after_header', 'genesis_do_nav', 15 );
 
 //* Reposition the secondary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
-add_action( 'genesis_footer', 'genesis_do_subnav', 7 );
+//add_action( 'genesis_footer', 'genesis_do_subnav', 7 );
 
-//* Reduce the secondary navigation menu to one level depth
+/* Reduce the secondary navigation menu to one level depth
 add_filter( 'wp_nav_menu_args', 'frc_secondary_menu_args' );
 function frc_secondary_menu_args( $args ){
 
@@ -103,7 +98,7 @@ function frc_secondary_menu_args( $args ){
 	$args['depth'] = 1;
 	return $args;
 
-}
+}*/
 
 /** Customize search form input box text */
 add_filter( 'genesis_search_text', 'custom_search_text' );
@@ -111,12 +106,13 @@ function custom_search_text($text) {
     return esc_attr('Search.');
 }
 
+/*
 add_filter('genesis_pre_get_option_site_layout', 'custom_home_layout');
 function custom_home_layout($opt) {
     if ( is_home() )
     $opt = 'content-sidebar';
     return $opt;
-}
+}*/
 
 // add categories to body classes
 function fr_body_class_add_categories( $classes ) {
@@ -144,26 +140,20 @@ add_filter( 'body_class', 'fr_body_class_add_categories' );
 * Scope: Posts page (index)
 * @author Sridhar Katakam
 * @link   http://sridharkatakam.com/display-featured-images-post-titles-posts-page-genesis/
-*/
-add_action( 'genesis_before_entry', 'mbf_postimg_above_title' );
+*/ 
+
+add_action('genesis_before_entry', 'mbf_postimg_above_title');
 
 function mbf_postimg_above_title() {
 
-remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+	remove_action('genesis_entry_content', 'genesis_do_post_image', 8);
 
-add_action( 'genesis_entry_header', 'mbf_postimg', 9 );
+	add_action('genesis_entry_header', 'mbf_postimg', 9);
 }
 
 function mbf_postimg() {
-echo '<a href="' . get_permalink() . '">' . genesis_get_image( array(  
-
-    'size' => 'featured' ,
-    'size' => 'homemid' , 
-    'size' => 'classic' ,
-    
-    ) ) . '</a>';
+	echo '<a href="' . get_permalink() . '">' . genesis_get_image(array('size' => 'thumbnail' )) . '</a>';
 }
-
 /** Customize the post info function */
 add_filter( 'genesis_post_info', 'post_info_filter' );
 function post_info_filter($post_info) {
@@ -195,37 +185,39 @@ function frc_breadcrumb_args( $args ) {
     return $args;
 }
 
-//* Hook entry-footer widget area after entry content
-add_action( 'genesis_entry_footer', 'frc_after_post_widget' );
-	function frc_after_post_widget() {
-	if ( is_singular( 'post' ) )
-		genesis_widget_area( 'after-post', array(
-			'before' => '<div class="after-post widget-area">',
+//* Hook entry-footer widget area after entry content, mostly for a signup form.
+add_filter( 'genesis_entry_footer', 'frc_entry_footer_widget' );
+	function frc_entry_footer_widget() {
+	if ( is_singular( 'post' ) ){
+		genesis_widget_area( 'entry-footer', array(
+			'before' => '<div class="entry-footer widget-area">',
 			'after' => '</div>',
 	) );
 }
+}
 
-/** Remove the post meta function */
+// In Pros category, add the meetpros widget. 
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
- add_action( 'genesis_entry_footer', 'frc_meetpros', 9 );
+add_action( 'genesis_entry_footer', 'frc_meetpros');
   function frc_meetpros() {
-  if ( is_singular ( ) && in_category ( 'Pros') )
+  if ( is_singular ( 'post' ) && in_category ( 'Pros') )
     genesis_widget_area( 'meetpros', array(
       'before' => '<div class="meetpros">',
       'after' => '</div>',
   ) );
 }
+	
  //** Modify the size of the Gravatar in the author box */
 add_filter( 'genesis_author_box_gravatar_size', 'frc_author_box_gravatar_size' );
 function frc_author_box_gravatar_size( $size ) {
     return '96';
 }
 
-/** Modify the speak your mind text */
+/** Change the speak your mind text */
 add_filter( 'genesis_comment_form_args', 'custom_comment_form_args' );
 function custom_comment_form_args($args) {
-    $args['title_reply'] = 'Your thoughts?';
+    $args['title_reply'] = 'Serve $rsgq;em up!';
     return $args;
 }
 
@@ -278,8 +270,6 @@ function frc_comments_gravatar( $args ) {
 		if (!in_category('pros') ) {
 			return;
 		}
-		
-
 			
 		// If post has no featured image, it will try to fall back to
 		// first-attached image if the first conditional in this function
